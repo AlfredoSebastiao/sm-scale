@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/tema', function () {
+    return view('admin/app');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
