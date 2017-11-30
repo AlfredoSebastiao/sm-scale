@@ -1,12 +1,12 @@
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/tema/teste">
             <i class="fa fa-fw fa-users"></i>
             <span class="nav-link-text">Escala</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/tema">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Registo</span>
         </a>
