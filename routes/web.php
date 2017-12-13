@@ -18,6 +18,8 @@ Route::get('/tema', function () {
     return view('admin/app');
 });
 
+Route::resource('grupos-de-oracao','GrupoDeOracaoController');
+
 Route::get('/tema/teste', function () {
     return view('admin/teste');
 });

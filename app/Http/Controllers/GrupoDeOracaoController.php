@@ -13,7 +13,7 @@ class GrupoDeOracaoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.info-adicional.grupo-de-oracao.index');
     }
 
     /**

@@ -37,7 +37,7 @@
                 <a href="cards.html">Nucleos</a>
             </li>
             <li>
-                <a href="/admin/grupos-de-oracao">Grupos de Oracao</a>
+                <a href="/grupos-de-oracao">Grupos de Oracao</a>
             </li>
 
         </ul>
