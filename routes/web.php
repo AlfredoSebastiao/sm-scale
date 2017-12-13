@@ -17,6 +17,10 @@ Route::get('/', function () {
 Route::get('/tema', function () {
     return view('admin/app');
 });
+
+Route::get('/tema/teste', function () {
+    return view('admin/teste');
+});
 Route::get('/tema/teste', function () {
     return view('admin/teste');
 });

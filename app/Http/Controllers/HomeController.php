@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.teste');
+        return view('admin.leitores.lista-de-leitores');
     }
 }
