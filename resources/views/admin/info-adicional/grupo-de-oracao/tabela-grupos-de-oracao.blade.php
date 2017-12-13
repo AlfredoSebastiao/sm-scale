@@ -1,3 +1,4 @@
+@include('admin.info-adicional.grupo-de-oracao.modal-registo-de-grupo-de-oracao')
 <div class="card mb-3">
     <div class="card-header clearfix">
         <div class="pull-left">
@@ -5,10 +6,11 @@
             Lista de Grupos de Oracao Registados
         </div>
         <div>
-            <button type="button" class="btn btn-success pull-right">
+            <a class="btn btn-success pull-right text-white" data-toggle="modal" data-target="#registoGrupoDeOracaoModal">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 Novo
-            </button>
+            </a>
+
         </div>
 
     </div>
@@ -78,7 +80,7 @@
                     <td>2008/12/13</td>
                     <td>$103,600</td>
                 </tr>
-                
+
                 </tbody>
             </table>
         </div>
