@@ -36,7 +36,7 @@ class GrupoDeOracaoController extends Controller
     public function store(Request $request)
     {
         GrupoDeOracao::create($request->all());
-        return redirect()->back()->with('message', 'IT WORKS!');
+        return redirect()->back()->with('message', 'REGISTO COM SUCESSO!');
     }
 
     /**
