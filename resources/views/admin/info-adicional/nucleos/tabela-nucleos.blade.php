@@ -38,9 +38,10 @@
                 <tbody>
                 @foreach($nucleos as $nucleo)
                     <tr>
+
                         <td>{{ $nucleo->id }}</td>
                         <td>{{ $nucleo->descricao }}</td>
-                        <td>0</td>
+                        <td>{{ $nucleo->grupo_de_oracao->descricao }}</td>
                         <td>
                             <a href="#" style="margin-right: 15px">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
