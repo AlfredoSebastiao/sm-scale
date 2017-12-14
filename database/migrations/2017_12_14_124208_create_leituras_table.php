@@ -18,6 +18,7 @@ class CreateLeiturasTable extends Migration {
 			$table->date('data')->nullable();
 			$table->integer('tipos_leitura_id')->index('fk_leituras_tipos_leitura1_idx');
 			$table->integer('membros_id')->index('fk_leituras_membros1_idx');
+            $table->timestamps();
 		});
 	}
 
