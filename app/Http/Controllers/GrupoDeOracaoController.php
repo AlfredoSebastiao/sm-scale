@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GrupoDeOracao;
 use Illuminate\Http\Request;
 
 class GrupoDeOracaoController extends Controller
@@ -34,7 +35,7 @@ class GrupoDeOracaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        GrupoDeOracao::create($request->all());
     }
 
     /**

@@ -15,7 +15,7 @@ class CreateGruposDeOracaoTable extends Migration {
 		Schema::create('grupos_de_oracao', function(Blueprint $table)
 		{
 			$table->integer('id')->primary();
-			$table->string('descicao', 45)->nullable();
+			$table->string('descricao', 45)->nullable();
 		});
 	}
 

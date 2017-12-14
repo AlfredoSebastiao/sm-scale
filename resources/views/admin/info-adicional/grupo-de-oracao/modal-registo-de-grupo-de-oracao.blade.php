@@ -7,13 +7,16 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
-                @include('admin.info-adicional.grupo-de-oracao.form-create-grupo-de-oracao')
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-success" href="login.html">Guardar</a>
-            </div>
+            <form method="POST" action="/grupos-de-oracao">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    @include('admin.info-adicional.grupo-de-oracao.form-create-grupo-de-oracao')
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
