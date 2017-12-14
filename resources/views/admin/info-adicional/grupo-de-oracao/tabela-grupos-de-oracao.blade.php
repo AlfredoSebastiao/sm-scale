@@ -20,67 +20,41 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>#</th>
+                    <th>Descricao</th>
+                    <th>Nr de Nucleos</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tfoot>
+
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>#</th>
+                    <th>Descricao</th>
+                    <th>Nr de Nucleos</th>
+                    <th></th>
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                </tr>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                </tr>
-                <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                </tr>
+                @foreach($grupos_de_oracao as $grupo_de_oracao)
+                    <tr>
+                        <td>{{ $grupo_de_oracao->id }}</td>
+                        <td>{{ $grupo_de_oracao->descricao }}</td>
+                        <td>0</td>
+                        <td>
+                            <a href="#" style="margin-right: 15px">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
 
-                <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td>$205,500</td>
-                </tr>
-                <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td>$103,600</td>
-                </tr>
+                        </td>
 
+
+
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

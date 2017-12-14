@@ -14,7 +14,8 @@ class GrupoDeOracaoController extends Controller
      */
     public function index()
     {
-        return view('admin.info-adicional.grupo-de-oracao.index');
+        $grupos_de_oracao = GrupoDeOracao::all();
+        return view('admin.info-adicional.grupo-de-oracao.index',compact('grupos_de_oracao'));
     }
 
     /**
@@ -36,7 +37,7 @@ class GrupoDeOracaoController extends Controller
     public function store(Request $request)
     {
         GrupoDeOracao::create($request->all());
-        return redirect()->back()->with('message', 'REGISTO COM SUCESSO!');
+        return redirect()->back()->with('message', 'GRUPO REGISTADO COM SUCESSO!');
     }
 
     /**
