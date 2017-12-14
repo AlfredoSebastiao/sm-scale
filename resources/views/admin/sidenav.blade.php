@@ -31,7 +31,7 @@
                 <a href="cards.html">Acolhedores</a>
             </li>
             <li>
-                <a href="cards.html">Grupos</a>
+                <a href="/grupos">Grupos</a>
             </li>
             <li>
                 <a href="/nucleos">Nucleos</a>

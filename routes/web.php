@@ -20,6 +20,8 @@ Route::get('/tema', function () {
 
 Route::resource('grupos-de-oracao','GrupoDeOracaoController');
 Route::resource('nucleos','NucleoController');
+Route::resource('grupos','GrupoController');
+
 
 Route::get('/tema/teste', function () {
     return view('admin/teste');

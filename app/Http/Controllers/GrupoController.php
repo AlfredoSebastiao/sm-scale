@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\GrupoDeOracao;
+use App\Grupo;
 use Illuminate\Http\Request;
 
-class GrupoDeOracaoController extends Controller
+class GrupoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class GrupoDeOracaoController extends Controller
      */
     public function index()
     {
-        $grupos_de_oracao = GrupoDeOracao::all();
-        return view('admin.info-adicional.grupo-de-oracao.index',compact('grupos_de_oracao'));
+        $grupos = Grupo::all();
+        return view('admin.info-adicional.grupos.index',compact('grupos'));
     }
 
     /**
@@ -36,8 +36,8 @@ class GrupoDeOracaoController extends Controller
      */
     public function store(Request $request)
     {
-        GrupoDeOracao::create($request->all());
-        return redirect()->back()->with('message', 'GRUPO DE ORACAO REGISTADO COM SUCESSO!');
+        Grupo::create($request->all());
+        return redirect()->back()->with('message', 'GRUPO REGISTADO COM SUCESSO!');
     }
 
     /**
