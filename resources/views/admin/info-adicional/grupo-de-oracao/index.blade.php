@@ -9,5 +9,11 @@
 @endsection
 
 @section('conteudo')
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            mbmbnb
+            {{ session()->get('message') }}
+        </div>
+    @endif
     @include('admin.info-adicional.grupo-de-oracao.tabela-grupos-de-oracao')
 @endsection

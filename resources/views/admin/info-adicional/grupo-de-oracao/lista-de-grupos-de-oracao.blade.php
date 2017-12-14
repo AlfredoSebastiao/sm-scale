@@ -9,6 +9,7 @@
 @endsection
 
 @section('conteudo')
+
     {{--@include('admin.leitores.sessao-novo')--}}
     @include('admin.leitores.tabela-leitores')
 @endsection
