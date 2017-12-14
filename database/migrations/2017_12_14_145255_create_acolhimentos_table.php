@@ -14,7 +14,7 @@ class CreateAcolhimentosTable extends Migration {
 	{
 		Schema::create('acolhimentos', function(Blueprint $table)
 		{
-			$table->integer('idacolhimentos')->primary();
+			$table->increments('id');
 			$table->date('data')->nullable();
 			$table->integer('membros_id')->index('fk_acolhimentos_membros1_idx');
 			$table->timestamps();

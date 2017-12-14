@@ -14,6 +14,7 @@ class CreateGruposHasMembrosTable extends Migration {
 	{
 		Schema::create('grupos_has_membros', function(Blueprint $table)
 		{
+
 			$table->integer('grupos_id')->index('fk_grupos_has_membros_grupos1_idx');
 			$table->integer('membros_id')->index('fk_grupos_has_membros_membros1_idx');
 			$table->timestamps();

@@ -14,7 +14,7 @@ class CreateTiposLeituraTable extends Migration {
 	{
 		Schema::create('tipos_leitura', function(Blueprint $table)
 		{
-			$table->integer('id')->primary();
+			$table->increments('id');
 			$table->string('descricao', 50)->nullable();
 			$table->timestamps();
 		});

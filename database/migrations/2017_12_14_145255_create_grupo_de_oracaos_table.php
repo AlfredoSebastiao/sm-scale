@@ -14,8 +14,8 @@ class CreateGrupoDeOracaosTable extends Migration {
 	{
 		Schema::create('grupo_de_oracaos', function(Blueprint $table)
 		{
-			$table->integer('id')->primary();
-			$table->string('descicao', 45)->nullable();
+            $table->increments('id');
+			$table->string('descricao', 45)->nullable();
 			$table->timestamps();
 		});
 	}
