@@ -16,8 +16,8 @@ class CreateGruposHasMembrosTable extends Migration {
 		{
 			$table->integer('grupos_id')->index('fk_grupos_has_membros_grupos1_idx');
 			$table->integer('membros_id')->index('fk_grupos_has_membros_membros1_idx');
+			$table->timestamps();
 			$table->primary(['grupos_id','membros_id']);
-            $table->timestamps();
 		});
 	}
 

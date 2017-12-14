@@ -24,7 +24,7 @@ class CreateMembrosTable extends Migration {
 			$table->boolean('is_crismado')->nullable();
 			$table->boolean('is_baptizado')->nullable();
 			$table->boolean('is_casado')->nullable();
-            $table->timestamps();
+			$table->timestamps();
 		});
 	}
 

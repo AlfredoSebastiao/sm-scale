@@ -16,8 +16,8 @@ class CreateNucleosHasMembrosTable extends Migration {
 		{
 			$table->integer('nucleos_id')->index('fk_nucleos_has_membros_nucleos1_idx');
 			$table->integer('membros_id')->index('fk_nucleos_has_membros_membros1_idx');
+			$table->timestamps();
 			$table->primary(['nucleos_id','membros_id']);
-            $table->timestamps();
 		});
 	}
 
