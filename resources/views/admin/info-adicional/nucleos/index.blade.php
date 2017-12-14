@@ -4,7 +4,7 @@
         <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Grupos de Oracao</li>
+        <li class="breadcrumb-item active">Nucleos</li>
     </ol>
 @endsection
 
@@ -14,5 +14,5 @@
             {{ session()->get('message') }}
         </div>
     @endif
-    @include('admin.info-adicional.grupo-de-oracao.tabela-grupos-de-oracao')
+    @include('admin.info-adicional.nucleos.tabela-nucleos')
 @endsection

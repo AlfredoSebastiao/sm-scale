@@ -19,6 +19,7 @@ Route::get('/tema', function () {
 });
 
 Route::resource('grupos-de-oracao','GrupoDeOracaoController');
+Route::resource('nucleos','NucleoController');
 
 Route::get('/tema/teste', function () {
     return view('admin/teste');

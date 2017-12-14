@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Nucleo;
 use Illuminate\Http\Request;
+use App\GrupoDeOracao;
 
 class NucleoController extends Controller
 {
@@ -13,7 +15,11 @@ class NucleoController extends Controller
      */
     public function index()
     {
-        //
+        /*
+         * Indo Buscar grupos de oracao
+         */
+        $grupos_de_oracao = GrupoDeOracao::all();
+        return view('admin.info-adicional.nucleos.index', compact('grupos_de_oracao'));
     }
 
     /**
@@ -34,7 +40,8 @@ class NucleoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Nucleo::create($request->all());
+        return redirect()->back()->with('message', 'NUCLEO REGISTADO COM SUCESSO!');
     }
 
     /**
