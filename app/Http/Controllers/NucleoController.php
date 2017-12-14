@@ -19,7 +19,13 @@ class NucleoController extends Controller
          * Indo Buscar grupos de oracao
          */
         $grupos_de_oracao = GrupoDeOracao::all();
-        return view('admin.info-adicional.nucleos.index', compact('grupos_de_oracao'));
+
+        /*
+         * Indo buscar nucleos
+         */
+        $nucleos = Nucleo::select('id','descricao','grupos_de_oracao_id')->with('grupo_de_oracao')->first();
+        return $nucleos;
+        //return view('admin.info-adicional.nucleos.index', compact('grupos_de_oracao','nucleos'));
     }
 
     /**

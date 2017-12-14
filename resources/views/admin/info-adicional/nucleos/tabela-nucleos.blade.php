@@ -22,7 +22,7 @@
                 <tr>
                     <th>#</th>
                     <th>Descricao</th>
-                    <th>Nr de Nucleos</th>
+                    <th>Grupo de Oracao</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -31,30 +31,30 @@
                 <tr>
                     <th>#</th>
                     <th>Descricao</th>
-                    <th>Nr de Nucleos</th>
+                    <th>Grupo de Oracao</th>
                     <th></th>
                 </tr>
                 </tfoot>
                 <tbody>
-                {{--@foreach($grupos_de_oracao as $grupo_de_oracao)--}}
-                    {{--<tr>--}}
-                        {{--<td>{{ $grupo_de_oracao->id }}</td>--}}
-                        {{--<td>{{ $grupo_de_oracao->descricao }}</td>--}}
-                        {{--<td>0</td>--}}
-                        {{--<td>--}}
-                            {{--<a href="#" style="margin-right: 15px">--}}
-                                {{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
-                            {{--</a>--}}
-                            {{--<a href="#">--}}
-                                {{--<i class="fa fa-trash" aria-hidden="true"></i>--}}
-                            {{--</a>--}}
+                @foreach($nucleos as $nucleo)
+                    <tr>
+                        <td>{{ $nucleo->id }}</td>
+                        <td>{{ $nucleo->descricao }}</td>
+                        <td>0</td>
+                        <td>
+                            <a href="#" style="margin-right: 15px">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
 
-                        {{--</td>--}}
+                        </td>
 
 
 
-                    {{--</tr>--}}
-                {{--@endforeach--}}
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
