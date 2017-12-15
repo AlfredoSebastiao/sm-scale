@@ -25,7 +25,7 @@
         </a>
         <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-                <a href="navbar.html">Leitores</a>
+                <a href="/leitores">Leitores</a>
             </li>
             <li>
                 <a href="cards.html">Acolhedores</a>

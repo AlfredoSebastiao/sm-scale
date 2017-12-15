@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Grupo;
+use App\Membro;
+use App\Nucleo;
 use Illuminate\Http\Request;
 
 class MembroController extends Controller
@@ -13,7 +16,18 @@ class MembroController extends Controller
      */
     public function index()
     {
-        //
+        /*
+        * Indo Buscar nucleos
+        */
+        $nucleos = Nucleo::all();
+
+        /**
+         * indo buscar todos grupos
+         */
+        $grupos = Grupo::all();
+
+        $membros = Membro::all();
+        return view('admin.leitores.index', compact('membros','nucleos','grupos'));
     }
 
     /**

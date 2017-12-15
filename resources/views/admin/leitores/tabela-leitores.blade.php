@@ -36,10 +36,10 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach($grupos as $grupo)
+                @foreach($membros as $membro)
                     <tr>
-                        <td>{{ $grupo->id }}</td>
-                        <td>{{ $grupo->descricao }}</td>
+                        <td>{{ $membro->id }}</td>
+                        <td>{{ $membro->nome }}</td>
                         <td>0</td>
                         <td>
                             <a href="#" style="margin-right: 15px">
