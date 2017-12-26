@@ -48,7 +48,9 @@ class MembroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(isset($request->Jovens))
+            return 'seleccionado';
+        return $request->all();
     }
 
     /**

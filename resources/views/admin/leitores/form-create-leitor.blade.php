@@ -50,13 +50,13 @@
         <label>Sexo:</label>
         <br>
         <label class="custom-control custom-radio">
-            <input id="radio1" name="radio" type="radio" class="custom-control-input">
+            <input id="radio1" name="is_masculino" type="radio" class="custom-control-input" value="1">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Masculino</span>
         </label>
         <br>
         <label class="custom-control custom-radio">
-            <input id="radio2" name="radio" type="radio" class="custom-control-input">
+            <input id="radio2" name="is_masculino" type="radio" class="custom-control-input" value="0">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Feminino</span>
         </label>
@@ -81,7 +81,7 @@
         <br>
 
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
+            <input type="checkbox" class="custom-control-input" name="">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Casado</span>
         </label>
@@ -95,7 +95,7 @@
         @foreach($grupos as $grupo)
             <br>
             <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input">
+                <input type="checkbox" class="custom-control-input"  name="{{ $grupo->descricao }}" value="{{ $grupo->descricao }}">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">{{ $grupo->descricao }}</span>
             </label>

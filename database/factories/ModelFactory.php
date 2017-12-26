@@ -22,3 +22,30 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$grupos = ['Adolecentes', 'Jovens', 'Catequistas', 'Liturgia','Acolitos'];
+$factory->define(App\Grupo::class, function (Faker\Generator $faker) use ($grupos) {
+    return [
+        'descricao' => $faker->unique()->randomElement($grupos),
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$gruposDeOracao = ['Sagrado Coracao de Jesus', 'Imaculada', 'Sao Damasso', 'Sao Miguel'];
+$factory->define(App\GrupoDeOracao::class, function (Faker\Generator $faker) use ($gruposDeOracao) {
+    return [
+        'descricao' => $faker->unique()->randomElement($gruposDeOracao),
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$nucleos = ['Sao Damasso', 'Maria Mae De Jesus', 'Sao Pedro e Joao', 'Sagrado Menino'];
+$factory->define(App\Nucleo::class, function (Faker\Generator $faker) use ($nucleos) {
+    return [
+        'descricao' => $faker->unique()->randomElement($nucleos),
+        'grupos_de_oracao_id' => 4,
+    ];
+});
