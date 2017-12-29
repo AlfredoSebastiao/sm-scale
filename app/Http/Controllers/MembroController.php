@@ -64,6 +64,7 @@ class MembroController extends Controller
 
         $membro->save();
 
+        return redirect()->back()->with('message', 'REGISTADO COM SUCESSO!');
     }
 
     /**
