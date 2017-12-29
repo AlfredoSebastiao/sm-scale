@@ -1,4 +1,5 @@
 <div class="row">
+    <input type="hidden" name="funcao" value="1">
     <div class="form-group col-lg-4">
         <label for="apelido">Apelido</label>
         <input type="text" class="form-control" name="apelido" id="apelido" required>
@@ -24,14 +25,14 @@
 <div class="row">
     <div class="form-group col-lg-4">
         <label for="data_de_nascimento">Data de Nascimento:</label>
-        <input type="date" class="form-control" name="data_de_nascimento" id="data_de_nascimento" required>
+        <input type="date" class="form-control" name="data_nascimento" id="data_nascimento" required>
     </div>
 
     <div class="form-group col-lg-4">
         <label for="telefone">Nr de Telefone:</label>
         <div class="input-group ">
             <span class="input-group-addon" id="basic-addon1">+258-8</span>
-            <input name="telefone" id="telefone" type="number" class="form-control" placeholder="" aria-describedby="basic-addon1">
+            <input name="nr_telefone" id="nr_telefone" type="number" maxlength="8" minlength="8" class="form-control" placeholder="" aria-describedby="basic-addon1">
         </div>
     </div>
 
@@ -60,6 +61,7 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Feminino</span>
         </label>
+        <br>
 
     </div>
 
@@ -67,21 +69,21 @@
         <label for="telefone">Sacramentos:</label>
         <br>
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
+            <input type="checkbox" class="custom-control-input" name="is_baptizado" value="1">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Baptizado</span>
         </label>
         <br>
 
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
+            <input type="checkbox" class="custom-control-input" name="is_crismado" value="1">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Crismado</span>
         </label>
         <br>
 
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="">
+            <input type="checkbox" class="custom-control-input" name="is_casado" value="1">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Casado</span>
         </label>

@@ -48,9 +48,22 @@ class MembroController extends Controller
      */
     public function store(Request $request)
     {
-        if(isset($request->Jovens))
-            return 'seleccionado';
-        return $request->all();
+
+        $membro = new Membro();
+
+        $membro->nome = $request->nome;
+        $membro->apelido = $request->apelido;
+        $membro->email = $request->email;
+        $membro->data_nascimento = $request->data_nascimento;
+        $membro->nr_telefone = $request->nr_telefone;
+        $membro->is_masculino = $request->is_masculino;
+        $membro->is_crismado = $request->is_crismado;
+        $membro->is_baptizado = $request->is_baptizado;
+        $membro->is_casado = $request->is_casado;
+        $membro->funcao = $request->funcao;
+
+        $membro->save();
+
     }
 
     /**
