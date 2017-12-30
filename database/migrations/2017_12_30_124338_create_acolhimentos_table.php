@@ -17,6 +17,7 @@ class CreateAcolhimentosTable extends Migration {
 			$table->integer('idacolhimentos', true);
 			$table->date('data')->nullable();
 			$table->integer('membros_id')->index('fk_acolhimentos_membros1_idx');
+            $table->timestamps();
 		});
 	}
 

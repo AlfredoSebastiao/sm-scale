@@ -17,6 +17,7 @@ class CreateNucleosTable extends Migration {
 			$table->integer('id', true);
 			$table->string('designacao', 50)->nullable();
 			$table->integer('grupos_de_oracao_id')->index('fk_nucleos_grupos_de_oracao_idx');
+            $table->timestamps();
 		});
 	}
 

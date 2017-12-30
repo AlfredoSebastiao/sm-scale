@@ -26,6 +26,7 @@ class CreateMembrosTable extends Migration {
 			$table->boolean('is_casado')->nullable();
 			$table->integer('funcao')->nullable();
 			$table->integer('nucleos_id')->index('fk_membros_nucleos1_idx');
+            $table->timestamps();
 		});
 	}
 

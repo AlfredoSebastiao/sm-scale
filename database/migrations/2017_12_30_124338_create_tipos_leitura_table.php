@@ -16,6 +16,7 @@ class CreateTiposLeituraTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->string('descricao', 50)->nullable();
+            $table->timestamps();
 		});
 	}
 
