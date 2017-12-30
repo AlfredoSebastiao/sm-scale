@@ -39,7 +39,7 @@
                 @foreach($grupos_de_oracao as $grupo_de_oracao)
                     <tr>
                         <td>{{ $grupo_de_oracao->id }}</td>
-                        <td>{{ $grupo_de_oracao->descricao }}</td>
+                        <td>{{ $grupo_de_oracao->designacao }}</td>
                         <td>0</td>
                         <td>
                             <a href="#" style="margin-right: 15px">

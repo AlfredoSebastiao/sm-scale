@@ -61,16 +61,13 @@ class MembroController extends Controller
         $membro->is_baptizado = $request->is_baptizado;
         $membro->is_casado = $request->is_casado;
         $membro->funcao = $request->funcao;
+        $membro->nuclos_id = $request->nucleos_id;
 
         $membro->save();
 
         $lastMembroId = Membro::select('id')->orderBy('id','desc')->first();
 
-        $nucleoHasMembro = new Nucleo();
-        $nucleoHasMembro->nucleos_id = $request->nucleos_id;
-        $nucleoHasMembro->membros_id = $lastMembroId->id;
 
-        $nucleoHasMembro->save();
 
         return redirect()->back()->with('message', 'REGISTADO COM SUCESSO!');
     }

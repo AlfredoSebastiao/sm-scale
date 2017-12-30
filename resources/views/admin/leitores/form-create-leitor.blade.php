@@ -16,7 +16,7 @@
         <select class="form-control" id="nucleos_id" name="nucleos_id">
             <option disabled selected>Seleccione uma opcao</option>
             @foreach($nucleos as $nucleo)
-                <option value="{{ $nucleo->id }}">{{ $nucleo->descricao }}</option>
+                <option value="{{ $nucleo->id }}">{{ $nucleo->designacao }}</option>
             @endforeach
         </select>
     </div>
@@ -97,9 +97,9 @@
         @foreach($grupos as $grupo)
             <br>
             <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"  name="{{ $grupo->descricao }}" value="{{ $grupo->descricao }}">
+                <input type="checkbox" class="custom-control-input"  name="{{ $grupo->designacao }}" value="{{ $grupo->designacao }}">
                 <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">{{ $grupo->descricao }}</span>
+                <span class="custom-control-description">{{ $grupo->designacao }}</span>
             </label>
         @endforeach
     </div>
