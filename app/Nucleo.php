@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nucleo extends Model
 {
     protected $fillable = [
-        'descricao','grupos_de_oracao_id',
+        'designacao','grupos_de_oracao_id',
     ];
 
     protected $with = ['grupo_de_oracao'];

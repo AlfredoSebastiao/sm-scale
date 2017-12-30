@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GrupoDeOracao extends Model
 {
     protected $fillable = [
-        'descricao',
+        'designacao',
     ];
 
     public function nucleo(){

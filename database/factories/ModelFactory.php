@@ -29,7 +29,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $grupos = ['Adolecentes', 'Jovens', 'Catequistas', 'Liturgia','Acolitos'];
 $factory->define(App\Grupo::class, function (Faker\Generator $faker) use ($grupos) {
     return [
-        'descricao' => $faker->unique()->randomElement($grupos),
+        'designacao' => $faker->unique()->randomElement($grupos),
     ];
 });
 
@@ -37,7 +37,7 @@ $factory->define(App\Grupo::class, function (Faker\Generator $faker) use ($grupo
 $gruposDeOracao = ['Sagrado Coracao de Jesus', 'Imaculada', 'Sao Damasso', 'Sao Miguel'];
 $factory->define(App\GrupoDeOracao::class, function (Faker\Generator $faker) use ($gruposDeOracao) {
     return [
-        'descricao' => $faker->unique()->randomElement($gruposDeOracao),
+        'designacao' => $faker->unique()->randomElement($gruposDeOracao),
     ];
 });
 
@@ -45,7 +45,7 @@ $factory->define(App\GrupoDeOracao::class, function (Faker\Generator $faker) use
 $nucleos = ['Sao Damasso', 'Maria Mae De Jesus', 'Sao Pedro e Joao', 'Sagrado Menino'];
 $factory->define(App\Nucleo::class, function (Faker\Generator $faker) use ($nucleos) {
     return [
-        'descricao' => $faker->unique()->randomElement($nucleos),
+        'designacao' => $faker->unique()->randomElement($nucleos),
         'grupos_de_oracao_id' => 4,
     ];
 });
