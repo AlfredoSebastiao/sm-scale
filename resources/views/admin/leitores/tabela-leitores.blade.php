@@ -25,7 +25,7 @@
                     <th>Data de Nascimento</th>
                     <th>Sexo</th>
                     <th>Numero de Telefone</th>
-                    <th>Email</th>
+                    <th>Nucleo</th>
                     <th>Operacoes</th>
                 </tr>
                 </thead>
@@ -36,7 +36,7 @@
                     <th>Data de Nascimento</th>
                     <th>Sexo</th>
                     <th>Numero de Telefone</th>
-                    <th>Email</th>
+                    <th>Nucleo</th>
                     <th>Operacoes</th>
                 </tr>
                 </tfoot>
@@ -54,7 +54,7 @@
                             @endif
                         </td>
                         <td> 8{{ $membro->nr_telefone }}</td>
-                        <td>{{ $membro->email }}</td>
+                        <td>{{ $membro->nucleo->designacao }}</td>
                         <td>
                             <a href="#">
                                 <i class="fa fa-more" aria-hidden="true"></i>

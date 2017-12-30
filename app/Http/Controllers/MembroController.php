@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Grupo;
+use App\GrupoHasMembro;
 use App\Membro;
 use App\Nucleo;
 use Illuminate\Http\Request;
 
 class MembroController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,7 @@ class MembroController extends Controller
      */
     public function index()
     {
-        /*
+        /**
         * Indo Buscar nucleos
         */
         $nucleos = Nucleo::all();
@@ -26,7 +28,11 @@ class MembroController extends Controller
          */
         $grupos = Grupo::all();
 
+        /**
+         * indo buscar membros
+         */
         $membros = Membro::all();
+
         return view('admin.leitores.index', compact('membros','nucleos','grupos'));
     }
 
@@ -61,14 +67,36 @@ class MembroController extends Controller
         $membro->is_baptizado = $request->is_baptizado;
         $membro->is_casado = $request->is_casado;
         $membro->funcao = $request->funcao;
-        $membro->nuclos_id = $request->nucleos_id;
+        $membro->nucleos_id = $request->nucleos_id;
 
         $membro->save();
 
+        /**
+         * Indo buscar o ultimo registo inserido
+         */
         $lastMembroId = Membro::select('id')->orderBy('id','desc')->first();
 
+        /**
+         * Indo buscar todos os grupos salvos
+         */
+        $grupos = Grupo::all();
 
 
+
+        $grupo = null;
+        foreach ($grupos as $grupo){
+            /**
+             * Verificando se um determinado grupo foi ou nao seleccionado
+             */
+            if(isset($request->{$grupo->designacao})){
+
+                $membroGrupo = new GrupoHasMembro();
+                $membroGrupo->membros_id = $lastMembroId->id;
+                $membroGrupo->grupos_id = $grupo->id;
+
+                $membroGrupo->save();
+            }
+        }
         return redirect()->back()->with('message', 'REGISTADO COM SUCESSO!');
     }
 

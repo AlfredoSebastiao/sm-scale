@@ -15,4 +15,8 @@ class Nucleo extends Model
     public function grupo_de_oracao(){
         return $this->belongsTo('App\GrupoDeOracao', 'grupos_de_oracao_id');
     }
+
+    public function membros(){
+        return $this->hasOne('App\Membros', 'nucleos_id');
+    }
 }
