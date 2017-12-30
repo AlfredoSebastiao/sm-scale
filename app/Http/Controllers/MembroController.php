@@ -64,6 +64,14 @@ class MembroController extends Controller
 
         $membro->save();
 
+        $lastMembroId = Membro::select('id')->orderBy('id','desc')->first();
+
+        $nucleoHasMembro = new Nucleo();
+        $nucleoHasMembro->nucleos_id = $request->nucleos_id;
+        $nucleoHasMembro->membros_id = $lastMembroId->id;
+
+        $nucleoHasMembro->save();
+
         return redirect()->back()->with('message', 'REGISTADO COM SUCESSO!');
     }
 

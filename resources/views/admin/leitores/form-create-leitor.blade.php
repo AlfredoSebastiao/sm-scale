@@ -13,7 +13,7 @@
 
     <div class="form-group col-lg-4">
         <label for="nucleo_id">Seleccione Nucleo:</label>
-        <select class="form-control" id="nucleo_id" name="nucleo_id">
+        <select class="form-control" id="nucleos_id" name="nucleos_id">
             <option disabled selected>Seleccione uma opcao</option>
             @foreach($nucleos as $nucleo)
                 <option value="{{ $nucleo->id }}">{{ $nucleo->descricao }}</option>

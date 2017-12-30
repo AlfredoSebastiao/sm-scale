@@ -14,10 +14,9 @@ class CreateNucleosTable extends Migration {
 	{
 		Schema::create('nucleos', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('descricao', 50)->nullable();
+			$table->integer('id', true);
+			$table->string('designacao', 50)->nullable();
 			$table->integer('grupos_de_oracao_id')->index('fk_nucleos_grupos_de_oracao_idx');
-			$table->timestamps();
 		});
 	}
 

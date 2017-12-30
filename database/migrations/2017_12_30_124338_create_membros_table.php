@@ -14,7 +14,7 @@ class CreateMembrosTable extends Migration {
 	{
 		Schema::create('membros', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->integer('id', true);
 			$table->string('nome', 45);
 			$table->string('apelido', 45);
 			$table->string('email', 45)->nullable()->unique('email_UNIQUE');
@@ -24,7 +24,8 @@ class CreateMembrosTable extends Migration {
 			$table->boolean('is_crismado')->nullable();
 			$table->boolean('is_baptizado')->nullable();
 			$table->boolean('is_casado')->nullable();
-			$table->timestamps();
+			$table->integer('funcao')->nullable();
+			$table->integer('nucleos_id')->index('fk_membros_nucleos1_idx');
 		});
 	}
 

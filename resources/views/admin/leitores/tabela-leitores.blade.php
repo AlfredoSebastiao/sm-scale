@@ -65,11 +65,7 @@
                             <a href="#">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
-
-
                         </td>
-
-
 
                     </tr>
                 @endforeach
