@@ -22,7 +22,7 @@
                 <tr>
                     <th>Apelido</th>
                     <th>Nome</th>
-                    <th>Data de Nascimento</th>
+                    <th>Idade (Anos)</th>
                     <th>Sexo</th>
                     <th>Numero de Telefone</th>
                     <th>Nucleo</th>
@@ -33,7 +33,7 @@
                 <tr>
                     <th>Apelido</th>
                     <th>Nome</th>
-                    <th>Data de Nascimento</th>
+                    <th>Idade (Anos)</th>
                     <th>Sexo</th>
                     <th>Numero de Telefone</th>
                     <th>Nucleo</th>
@@ -45,7 +45,7 @@
                     <tr>
                         <td>{{ $membro->apelido }}</td>
                         <td>{{ $membro->nome }}</td>
-                        <td>{{ $membro->data_nascimento }}</td>
+                        <td>{{ $membro->data_nascimento}}</td>
                         <td>
                             @if($membro->is_masculino == 1)
                                 MASCULINO

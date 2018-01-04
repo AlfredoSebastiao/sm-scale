@@ -18,7 +18,7 @@ class CreateLimpezasTable extends Migration {
 			$table->date('data');
 			$table->integer('grupos_id')->nullable()->index('fk_limpezas_grupos1_idx');
 			$table->integer('nucleos_id')->nullable()->index('fk_limpezas_nucleos1_idx');
-            $table->timestamps();
+			$table->timestamps();
 		});
 	}
 

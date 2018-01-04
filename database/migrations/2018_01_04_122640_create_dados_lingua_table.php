@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGruposHasMembrosTable extends Migration {
+class CreateDadosLinguaTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateGruposHasMembrosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('grupos_has_membros', function(Blueprint $table)
+		Schema::create('dados_lingua', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('grupos_id')->index('fk_grupos_has_membros_grupos1_idx');
-			$table->integer('membros_id')->index('fk_grupos_has_membros_membros1_idx');
+			$table->boolean('portugues')->nullable();
+			$table->boolean('ingles')->nullable();
+			$table->integer('membros_id')->index('fk_dados_lingua_membros1_idx');
             $table->timestamps();
 		});
 	}
@@ -29,7 +30,7 @@ class CreateGruposHasMembrosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('grupos_has_membros');
+		Schema::drop('dados_lingua');
 	}
 
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTiposLeituraTable extends Migration {
+class CreateGruposTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateTiposLeituraTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tipos_leitura', function(Blueprint $table)
+		Schema::create('grupos', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('descricao', 50)->nullable();
-            $table->timestamps();
+			$table->string('designacao', 65)->nullable();
+			$table->timestamps();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateTiposLeituraTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tipos_leitura');
+		Schema::drop('grupos');
 	}
 
 }
