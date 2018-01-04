@@ -72,9 +72,9 @@
         </label>
         <br>
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="changana" value="1">
+            <input type="checkbox" class="custom-control-input" name="ronga" value="1">
             <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Changana</span>
+            <span class="custom-control-description">Ronga</span>
         </label>
 
     </div>

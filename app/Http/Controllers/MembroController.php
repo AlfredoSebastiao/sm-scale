@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DadosLingua;
 use App\Grupo;
 use App\GrupoHasMembro;
 use App\Membro;
@@ -77,11 +78,19 @@ class MembroController extends Controller
         $lastMembroId = Membro::select('id')->orderBy('id','desc')->first();
 
         /**
+         * gravando os dados da lingua do membro
+         */
+        $dadosLingua = new DadosLingua();
+        $dadosLingua->membros_id = $lastMembroId->id;
+        $dadosLingua->portugues = $request->portugues;
+        $dadosLingua->ronga = $request->ronga;
+
+        $dadosLingua->save();
+
+        /**
          * Indo buscar todos os grupos salvos
          */
         $grupos = Grupo::all();
-
-
 
         $grupo = null;
         foreach ($grupos as $grupo){
