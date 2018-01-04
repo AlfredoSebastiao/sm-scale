@@ -22,7 +22,7 @@ Route::resource('grupos-de-oracao','GrupoDeOracaoController');
 Route::resource('nucleos','NucleoController');
 Route::resource('grupos','GrupoController');
 Route::resource('leitores','MembroController');
-
+Route::resource('escala-leitores','EscalaLeitoresController');
 
 Route::get('/tema/teste', function () {
     return view('admin/teste');
