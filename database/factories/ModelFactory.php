@@ -40,13 +40,12 @@ $factory->define(App\GrupoDeOracao::class, function (Faker\Generator $faker) use
         'designacao' => $faker->unique()->randomElement($gruposDeOracao),
     ];
 });
-
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $nucleos = ['Sao Damasso', 'Maria Mae De Jesus', 'Sao Pedro e Joao', 'Sagrado Menino'];
 $gruposId = ['1','2','3','4'];
 $factory->define(App\Nucleo::class, function (Faker\Generator $faker) use ($nucleos, $gruposId) {
     return [
         'designacao' => $faker->unique()->randomElement($nucleos),
-        'grupos_de_oracao_id' => $faker->numberBetween(1, \App\GrupoDeOracao::all()->count()),
+        'grupos_de_oracao_id' => $faker->numberBetween(1, 4),
     ];
 });

@@ -63,10 +63,24 @@
         </label>
         <br>
 
+        <label for="">Linguas:</label>
+        <br>
+        <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="portugues" value="1" checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Portugues</span>
+        </label>
+        <br>
+        <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="changana" value="1">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Changana</span>
+        </label>
+
     </div>
 
     <div class="form-group col-lg-4">
-        <label for="telefone">Sacramentos:</label>
+        <label for="">Sacramentos:</label>
         <br>
         <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="is_baptizado" value="1">
