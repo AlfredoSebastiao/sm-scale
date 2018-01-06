@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DadosLingua;
+use App\Funcao;
+use App\FuncaoDoMembro;
 use App\Grupo;
 use App\GrupoHasMembro;
 use App\Membro;
@@ -67,7 +69,6 @@ class MembroController extends Controller
         $membro->is_crismado = $request->is_crismado;
         $membro->is_baptizado = $request->is_baptizado;
         $membro->is_casado = $request->is_casado;
-        $membro->funcao = $request->funcao;
         $membro->nucleos_id = $request->nucleos_id;
 
         $membro->save();
@@ -78,10 +79,40 @@ class MembroController extends Controller
         $lastMembroId = Membro::select('id')->orderBy('id','desc')->first();
 
         /**
+         * Verifica se membro foi seleccionado como salmista
+         */
+        if(isset($request->is_salmista)){
+            $funcao =  Funcao::select('id')->where('designacao','=','Salmista')->first();
+
+            $funcaoDoMembro = new FuncaoDoMembro();
+            $funcaoDoMembro->membros_id = $lastMembroId->id;
+            $funcaoDoMembro->funcao_id = $funcao->id;
+
+            $funcaoDoMembro->save();
+        }
+
+
+        /**
+         * Indo buscar a funcao que eh de leitor
+         */
+        $funcao = Funcao::select('id')->where('designacao','=',$request->funcao)->first();
+
+        $funcaoDoMembro = new FuncaoDoMembro();
+        $funcaoDoMembro->membros_id = $lastMembroId->id;
+        $funcaoDoMembro->funcao_id = $funcao->id;
+
+        $funcaoDoMembro->save();
+
+        /**
+         * Vai buscar a ultima funcao inserida
+         */
+        $funcaoDoMembro = FuncaoDoMembro::select('id')->orderBy('created_at','asc')->first();
+
+        /**
          * gravando os dados da lingua do membro
          */
         $dadosLingua = new DadosLingua();
-        $dadosLingua->membros_id = $lastMembroId->id;
+        $dadosLingua->funcao_has_membros_id = $funcaoDoMembro->id;
         $dadosLingua->portugues = $request->portugues;
         $dadosLingua->ronga = $request->ronga;
 

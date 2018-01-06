@@ -49,3 +49,13 @@ $factory->define(App\Nucleo::class, function (Faker\Generator $faker) use ($nucl
         'grupos_de_oracao_id' => $faker->numberBetween(1, 4),
     ];
 });
+
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$funcoes = ['Leitor', 'Acolhimento', 'Acolito', 'Salmista'];
+$factory->define(App\Funcao::class, function (Faker\Generator $faker) use ($funcoes) {
+    return [
+        'id' => $faker->unique()->numberBetween(1,4),
+        'designacao' => $faker->unique()->randomElement($funcoes),
+    ];
+});

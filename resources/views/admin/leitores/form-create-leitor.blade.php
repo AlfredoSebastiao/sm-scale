@@ -1,5 +1,5 @@
 <div class="row">
-    <input type="hidden" name="funcao" value="1">
+    <input type="hidden" name="funcao" value="Leitor">
     <div class="form-group col-lg-4">
         <label for="apelido">Apelido</label>
         <input type="text" class="form-control" name="apelido" id="apelido" required>
@@ -80,7 +80,7 @@
         <label for="">Outros:</label>
         <br>
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="portugues" value="3" checked>
+            <input type="checkbox" class="custom-control-input" name="is_salmista" value="Salmista">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Salmos</span>
         </label>
@@ -93,7 +93,7 @@
         <label for="">Sacramentos:</label>
         <br>
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="is_baptizado" value="1">
+            <input type="checkbox" class="custom-control-input" name="is_baptizado" value="1" checked>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Baptizado</span>
         </label>
