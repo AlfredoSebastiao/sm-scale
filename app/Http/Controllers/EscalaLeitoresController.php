@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\EscalaDeLeitura;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EscalaLeitoresController extends Controller
 {
@@ -13,7 +16,10 @@ class EscalaLeitoresController extends Controller
      */
     public function index()
     {
+        $mytime = Carbon::today()->toDateString();
+        return $mytime;
 
+        $esclas = EscalaDeLeitura::where()->get();
 
         return view('admin.escala.leitores.index');
     }
