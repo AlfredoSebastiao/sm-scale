@@ -2,6 +2,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">07 de Janeiro de 2018</h3>
+
     </div>
     <div class="panel-body">
 

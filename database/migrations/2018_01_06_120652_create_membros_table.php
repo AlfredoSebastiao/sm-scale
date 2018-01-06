@@ -21,12 +21,11 @@ class CreateMembrosTable extends Migration {
 			$table->string('nr_telefone', 15)->unique('nr_telefone_UNIQUE');
 			$table->date('data_nascimento')->nullable();
 			$table->boolean('is_masculino')->nullable();
-			$table->boolean('is_crismado')->nullable();
-			$table->boolean('is_baptizado')->nullable();
-			$table->boolean('is_casado')->nullable();
-			$table->integer('funcao')->nullable();
+			$table->boolean('is_crismado')->nullable()->default(0);
+			$table->boolean('is_baptizado')->nullable()->default(1);
+			$table->boolean('is_casado')->nullable()->default(0);
 			$table->integer('nucleos_id')->index('fk_membros_nucleos1_idx');
-			$table->timestamps();
+            $table->timestamps();
 		});
 	}
 

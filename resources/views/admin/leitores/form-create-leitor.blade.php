@@ -76,6 +76,16 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Ronga</span>
         </label>
+        <br>
+        <label for="">Outros:</label>
+        <br>
+        <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="portugues" value="3" checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Salmos</span>
+        </label>
+        <br>
+
 
     </div>
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGruposTable extends Migration {
+class CreateFuncaoTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateGruposTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('grupos', function(Blueprint $table)
+		Schema::create('funcao', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->string('designacao', 65)->nullable();
-			$table->timestamps();
+			$table->integer('id')->primary();
+			$table->string('designacao', 45)->nullable();
+            $table->timestamps();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateGruposTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('grupos');
+		Schema::drop('funcao');
 	}
 
 }

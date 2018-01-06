@@ -14,7 +14,7 @@ class AddForeignKeysToDadosLinguaTable extends Migration {
 	{
 		Schema::table('dados_lingua', function(Blueprint $table)
 		{
-			$table->foreign('membros_id', 'fk_dados_lingua_membros1')->references('id')->on('membros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('funcao_has_membros_id', 'fk_dados_lingua_funcao_has_membros1')->references('id')->on('funcao_has_membros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToDadosLinguaTable extends Migration {
 	{
 		Schema::table('dados_lingua', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_dados_lingua_membros1');
+			$table->dropForeign('fk_dados_lingua_funcao_has_membros1');
 		});
 	}
 

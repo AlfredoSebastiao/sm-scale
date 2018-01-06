@@ -15,6 +15,7 @@ class AddForeignKeysToAcolhimentosTable extends Migration {
 		Schema::table('acolhimentos', function(Blueprint $table)
 		{
 			$table->foreign('membros_id', 'fk_acolhimentos_membros1')->references('id')->on('membros')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+
 		});
 	}
 

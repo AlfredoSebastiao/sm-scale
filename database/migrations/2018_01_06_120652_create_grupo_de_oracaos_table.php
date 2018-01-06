@@ -16,7 +16,7 @@ class CreateGrupoDeOracaosTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->string('designacao', 65)->nullable();
-			$table->timestamps();
+            $table->timestamps();
 		});
 	}
 

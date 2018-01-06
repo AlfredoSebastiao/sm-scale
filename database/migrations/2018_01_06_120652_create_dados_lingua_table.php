@@ -17,7 +17,7 @@ class CreateDadosLinguaTable extends Migration {
 			$table->integer('id', true);
 			$table->boolean('portugues')->nullable();
 			$table->boolean('ronga')->nullable();
-			$table->integer('membros_id')->index('fk_dados_lingua_membros1_idx');
+			$table->integer('funcao_has_membros_id')->index('fk_dados_lingua_funcao_has_membros1_idx');
             $table->timestamps();
 		});
 	}
