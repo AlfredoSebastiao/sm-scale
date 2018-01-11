@@ -12,4 +12,6 @@ class Membro extends Model
     public function nucleo(){
         return $this->belongsTo('App\Nucleo', 'nucleos_id');
     }
+
+
 }

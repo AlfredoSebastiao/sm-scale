@@ -82,6 +82,7 @@ $factory->define(App\FuncaoDoMembro::class, function (Faker\Generator $faker) {
         'funcao_id' => $faker->numberBetween(1, \App\Funcao::all()->count()),
         'membros_id' => $faker->numberBetween(1, \App\Membro::all()->count()),
         'qnt_exercida' => $faker->numberBetween(1, 98),
+        'proximo_de' => $faker->unique()->numberBetween(0, 30),
 
     ];
 });
@@ -104,7 +105,5 @@ $factory->define(App\EscalaDeLeitura::class, function (Faker\Generator $faker) {
         'segunda_ronga_id' => $faker->numberBetween(1, \App\FuncaoDoMembro::all()->count()),
         'envagelho_id' => $faker->numberBetween(1, \App\FuncaoDoMembro::all()->count()),
         'salmos_id' => $faker->numberBetween(1, \App\FuncaoDoMembro::all()->count()),
-
-
     ];
 });
