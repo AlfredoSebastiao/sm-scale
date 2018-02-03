@@ -81,7 +81,7 @@
         <br>
 
         <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
+            <input type="checkbox" class="custom-control-input" name="">
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Casado</span>
         </label>
@@ -95,7 +95,7 @@
         @foreach($grupos as $grupo)
             <br>
             <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input">
+                <input type="checkbox" class="custom-control-input"  name="{{ $grupo->descricao }}" value="{{ $grupo->descricao }}">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">{{ $grupo->descricao }}</span>
             </label>

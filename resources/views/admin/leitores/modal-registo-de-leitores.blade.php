@@ -7,7 +7,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form method="POST" action="/grupos">
+            <form method="POST" action="/leitores">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     @include('admin.leitores.form-create-leitor')

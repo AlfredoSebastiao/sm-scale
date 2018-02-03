@@ -39,7 +39,7 @@
                 @foreach($grupos as $grupo)
                     <tr>
                         <td>{{ $grupo->id }}</td>
-                        <td>{{ $grupo->descricao }}</td>
+                        <td>{{ $grupo->designacao }}</td>
                         <td>0</td>
                         <td>
                             <a href="#" style="margin-right: 15px">
