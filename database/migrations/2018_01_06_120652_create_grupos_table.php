@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGrupoDeOracaosTable extends Migration {
+class CreateGruposTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateGrupoDeOracaosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('grupo_de_oracaos', function(Blueprint $table)
+		Schema::create('grupos', function(Blueprint $table)
 		{
-            $table->increments('id');
-			$table->string('descricao', 45)->nullable();
-			$table->timestamps();
+			$table->integer('id', true);
+			$table->string('designacao', 65)->nullable();
+            $table->timestamps();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateGrupoDeOracaosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('grupo_de_oracaos');
+		Schema::drop('grupos');
 	}
 
 }

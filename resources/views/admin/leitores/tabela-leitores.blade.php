@@ -20,38 +20,52 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Descricao</th>
-                    <th>Nr de Membros</th>
-                    <th></th>
+                    <th>Apelido</th>
+                    <th>Nome</th>
+                    <th>Idade (Anos)</th>
+                    <th>Sexo</th>
+                    <th>Numero de Telefone</th>
+                    <th>Nucleo</th>
+                    <th>Operacoes</th>
                 </tr>
                 </thead>
                 <tfoot>
-
                 <tr>
-                    <th>#</th>
-                    <th>Descricao</th>
-                    <th>Nr de Membros</th>
-                    <th></th>
+                    <th>Apelido</th>
+                    <th>Nome</th>
+                    <th>Idade (Anos)</th>
+                    <th>Sexo</th>
+                    <th>Numero de Telefone</th>
+                    <th>Nucleo</th>
+                    <th>Operacoes</th>
                 </tr>
                 </tfoot>
                 <tbody>
                 @foreach($membros as $membro)
                     <tr>
-                        <td>{{ $membro->id }}</td>
+                        <td>{{ $membro->apelido }}</td>
                         <td>{{ $membro->nome }}</td>
-                        <td>0</td>
+                        <td>{{ $membro->data_nascimento}}</td>
                         <td>
+                            @if($membro->is_masculino == 1)
+                                MASCULINO
+                            @else
+                                FEMININO
+                            @endif
+                        </td>
+                        <td> 8{{ $membro->nr_telefone }}</td>
+                        <td>{{ $membro->nucleo->designacao }}</td>
+                        <td>
+                            <a href="#">
+                                <i class="fa fa-more" aria-hidden="true"></i>
+                            </a>
                             <a href="#" style="margin-right: 15px">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <a href="#">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
-
                         </td>
-
-
 
                     </tr>
                 @endforeach

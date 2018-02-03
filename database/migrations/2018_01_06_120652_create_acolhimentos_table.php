@@ -14,10 +14,10 @@ class CreateAcolhimentosTable extends Migration {
 	{
 		Schema::create('acolhimentos', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->integer('idacolhimentos', true);
 			$table->date('data')->nullable();
 			$table->integer('membros_id')->index('fk_acolhimentos_membros1_idx');
-			$table->timestamps();
+            $table->timestamps();
 		});
 	}
 
