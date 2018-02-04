@@ -107,7 +107,11 @@
         <br>
 
         <label class="custom-control custom-checkbox">
+<<<<<<< HEAD
+            <input type="checkbox" class="custom-control-input" name="">
+=======
             <input type="checkbox" class="custom-control-input" name="is_casado" value="1">
+>>>>>>> a0e60828a73a49aeea35483e2440461e51ef69d5
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Casado</span>
         </label>
@@ -121,7 +125,11 @@
         @foreach($grupos as $grupo)
             <br>
             <label class="custom-control custom-checkbox">
+<<<<<<< HEAD
+                <input type="checkbox" class="custom-control-input"  name="{{ $grupo->descricao }}" value="{{ $grupo->descricao }}">
+=======
                 <input type="checkbox" class="custom-control-input"  name="{{ $grupo->designacao }}" value="{{ $grupo->designacao }}">
+>>>>>>> a0e60828a73a49aeea35483e2440461e51ef69d5
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">{{ $grupo->designacao }}</span>
             </label>
