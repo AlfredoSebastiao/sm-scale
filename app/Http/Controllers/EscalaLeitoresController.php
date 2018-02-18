@@ -29,7 +29,8 @@ class EscalaLeitoresController extends Controller
         $esclas = EscalaDeLeitura::where('data','>=',Carbon::today()->toDateString())->get();
 //        return $esclas;
         $controlo_lingua = false;
-        while(count($esclas) < 5){
+//        return $esclas;
+        while(count($esclas) < 2){
             $ultimaEscala = EscalaDeLeitura::orderBy('id','asc')->first();
 
             $escala = new EscalaDeLeitura();
@@ -61,14 +62,18 @@ class EscalaLeitoresController extends Controller
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
+            if($controlo_lingua){
                 FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
-            $controlo_lingua = false;
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $ultimaEscala->envagelho_id));
+                $controlo_lingua = false;
+            }
+
 //            return $funcoesDoMembroAuxiliar;
             /**
              * Faz o set do seleccionado para primeira leitura em port
              */
             $escala->primeira_portugues_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
 
             /**
              * Para a primeira Leitura em ronga
@@ -93,14 +98,16 @@ class EscalaLeitoresController extends Controller
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
+            if($controlo_lingua){
                 FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
-            $controlo_lingua = false;
-
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->primeira_portugues_id));
+                $controlo_lingua = false;
+            }
             /**
              * Faz o set do seleccionado para primeira leitura em ronga
              */
             $escala->primeira_ronga_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+            return $escala;
 
             /**
              * Para a Segunda Leitura em pt
@@ -124,9 +131,11 @@ class EscalaLeitoresController extends Controller
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
+            if($controlo_lingua){
                 FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
-            $controlo_lingua = false;
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->primeira_ronga_id));
+                $controlo_lingua = false;
+            }
 
             /**
              * Faz o set do seleccionado para Segunda leitura em port
@@ -152,12 +161,15 @@ class EscalaLeitoresController extends Controller
                     ->first();
 
             }
+
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
+            if($controlo_lingua){
                 FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
-            $controlo_lingua = false;
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->segunda_portugues_id));
+                $controlo_lingua = false;
+            }
             /**
              * Faz o set do seleccionado para Segunda leitura em ronga
              */
@@ -185,10 +197,11 @@ class EscalaLeitoresController extends Controller
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
+            if($controlo_lingua){
                 FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
-            $controlo_lingua = false;
-
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->segunda_ronga_id));
+                $controlo_lingua = false;
+            }
             /**
              * Faz o set do seleccionado para Segunda leitura em ronga
              */
@@ -218,9 +231,13 @@ class EscalaLeitoresController extends Controller
             /**
              * troca o apontador de proximo
              */
-            if($controlo_lingua)
-                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->id));
-            $controlo_lingua = false;
+            if($controlo_lingua){
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->envagelho_id));
+                $controlo_lingua = false;
+            }
+
+
             /**
              * Faz o set do seleccionado para Segunda leitura em ronga
              */
@@ -230,10 +247,14 @@ class EscalaLeitoresController extends Controller
             $escala->save();
 
 
-            return $escala;
-
+            /**
+             * Indo buscar todas escalas que estejam depois da data actual
+             */
+            $esclas = EscalaDeLeitura::where('data','>=',Carbon::today()->toDateString())->get();
 
         }
+
+
 
         return $esclas;
         return view('admin.escala.leitores.index');
