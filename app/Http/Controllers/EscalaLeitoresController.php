@@ -13,14 +13,268 @@ use Carbon\Carbon;
 class EscalaLeitoresController extends Controller
 {
 
+    public function index()
+    {
 
+        /**
+         * Indo buscar todas escalas que estejam depois da data actual
+         */
+        $esclas = EscalaDeLeitura::where('data','>=',Carbon::today()->toDateString())->get();
+//        return $esclas;
+        $controlo_lingua = false;
+//        return $esclas;
+        while(count($esclas) < 2){
+            $ultimaEscala = EscalaDeLeitura::orderBy('id','asc')->first();
+
+            $escala = new EscalaDeLeitura();
+            $escala->data = $ultimaEscala->data->addDays(8);
+
+            $funcao = Funcao::where('designacao','=','Leitor')->first();
+
+
+            /**
+             * Para a primeira Leitura em portugues
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->where('proximo_de','=',$ultimaEscala->envagelho_id)
+                ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                ->first();
+
+
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+
+
+            while( $funcoesDoMembroAuxiliar->portugues != 1){
+
+                $controlo_lingua = true;
+
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $ultimaEscala->envagelho_id));
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                $controlo_lingua = false;
+            }
+
+
+            /**
+             * Faz o set do seleccionado para primeira leitura em port
+             */
+            $escala->primeira_portugues_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
+
+
+            /**
+             * Para a primeira Leitura em ronga
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                ->where('proximo_de','=',$escala->primeira_portugues_id)
+                ->first();
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+
+            while($funcoesDoMembroAuxiliar->ronga != 1){
+                $controlo_lingua = true;
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->primeira_portugues_id));
+
+
+                $controlo_lingua = false;
+            }
+            /**
+             * Faz o set do seleccionado para primeira leitura em ronga
+             */
+            $escala->primeira_ronga_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
+
+            /**
+             * Para a Segunda Leitura em pt
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->where('proximo_de','=',$escala->primeira_ronga_id)
+                ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                ->first();
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+
+            while($funcoesDoMembroAuxiliar->portugues != 1){
+                $controlo_lingua = true;
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->primeira_ronga_id));
+                $controlo_lingua = false;
+            }
+
+            /**
+             * Faz o set do seleccionado para Segunda leitura em port
+             */
+            $escala->segunda_portugues_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
+            /**
+             * Para a Segunda Leitura em ronga
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->where('proximo_de','=',$escala->segunda_portugues_id)
+                ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                ->first();
+
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+
+            while($funcoesDoMembroAuxiliar->ronga != 1){
+                $controlo_lingua = true;
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->segunda_portugues_id));
+
+                $controlo_lingua = false;
+            }
+            /**
+             * Faz o set do seleccionado para Segunda leitura em ronga
+             */
+            $escala->segunda_ronga_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
+
+            /**
+             * Para a Envagelho
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->where('proximo_de','=',$escala->segunda_ronga_id)
+                ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                ->first();
+
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+            while($funcoesDoMembroAuxiliar->ronga != 1){
+                $controlo_lingua = true;
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->segunda_ronga_id));
+                $controlo_lingua = false;
+            }
+            /**
+             * Faz o set do seleccionado para Segunda leitura em ronga
+             */
+            $escala->envagelho_id = $funcoesDoMembroAuxiliar->funcao_has_membros_id;
+
+
+            $funcao = Funcao::where('designacao','=','Salmista')->first();
+
+            /**
+             * Para a Salmos
+             */
+            $funcoesDoMembro = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                ->where('proximo_de','=',$escala->envagelho_id)
+                ->first();
+
+            $funcoesDoMembroAuxiliar = $funcoesDoMembro;
+
+            while($funcoesDoMembroAuxiliar->funcao_id != $funcao->id){
+
+                $controlo_lingua = true;
+                $funcoesDoMembroAuxiliar = FuncaoDoMembro::where('funcao_id','=',$funcao->id)
+                    ->where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)
+                    ->join('dados_lingua','funcao_has_membros.id','=','funcao_has_membros_id')
+                    ->first();
+
+            }
+
+            /**
+             * troca o apontador de proximo
+             */
+            if($controlo_lingua){
+                FuncaoDoMembro::where('proximo_de','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $funcoesDoMembro->id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembro->id)->update(array('proximo_de' => $funcoesDoMembroAuxiliar->funcao_has_membros_id));
+                FuncaoDoMembro::where('id','=',$funcoesDoMembroAuxiliar->funcao_has_membros_id)->update(array('proximo_de' => $escala->envagelho_id));
+                $controlo_lingua = false;
+            }
+
+
+            /**
+             * Faz o set do seleccionado para Segunda leitura em ronga
+             */
+            $escala->salmos_id = $funcoesDoMembroAuxiliar->id;
+
+            $escala->save();
+
+            return $escala;
+
+            /**
+             * Indo buscar todas escalas que estejam depois da data actual
+             */
+            $esclas = EscalaDeLeitura::where('data','>=',Carbon::today()->toDateString())->get();
+
+        }
+
+
+
+        return $esclas;
+        return view('admin.escala.leitores.index');
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index2()
     {
 
         /**
