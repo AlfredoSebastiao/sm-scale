@@ -10,4 +10,12 @@ class FuncaoDoMembro extends Model
 
     protected $fillable = ['fucao_id','membros_id','qnt_exercida',];
 
+    protected $with = ['membro'];
+
+    public function membro(){
+        return $this->belongsTo('App\Membro', 'membros_id');
+    }
+
+
+
 }
